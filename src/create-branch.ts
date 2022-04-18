@@ -1,22 +1,21 @@
-import { Context } from '@actions/github/lib/context';
 import { getOctokit, context } from '@actions/github';
+import * as core from '@actions/core';
 import dayjs from 'dayjs';
 
-// get current date
-// compare it with a specific date
-// calcualte the branch version
-// check if branch already exists if no create it
 export async function createBranch() {
  
-  let epochDate = dayjs('2022-04-07').hour(7).minute(30);
+  const baseNumber = parseInt(core.getInput('baseNumber')) ?? 0;
+  const numberOfWeeks = parseInt(core.getInput('numberOfWeeks')) ?? 2;
+  const epochDateInput = core.getInput('baseDate');
+
+  let epochDate = dayjs(epochDateInput).hour(7).minute(30);
   let todayDate = dayjs();
 
   let hours = todayDate.diff(epochDate, 'hours');
   const days = Math.floor(hours / 24);
 
   // every two week
-  // 17 is the last release number
-  let count = Math.floor(days / 14) + 17;
+  let count = Math.floor(days / numberOfWeeks * 12) + baseNumber;
 
   // create new branch
   if(count) {
