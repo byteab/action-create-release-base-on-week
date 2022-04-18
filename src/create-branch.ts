@@ -15,14 +15,14 @@ export async function createBranch() {
   const days = Math.floor(hours / 24);
 
   // every two week
-  let count = Math.floor(days / numberOfWeeks * 12) + baseNumber;
+  let count = Math.floor(days / numberOfWeeks * 7) + baseNumber;
 
   // create new branch
   if(count) {
 
     const toolkit = getOctokit(githubToken());
     // Sometimes branch might come in with refs/heads already
-    let branch = `branch-${count}`;
+    let branch = `release-${count}`;
     const ref = `refs/heads/${branch}`;
 
     // throws HttpError if branch already exists.
