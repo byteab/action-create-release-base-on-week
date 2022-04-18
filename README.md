@@ -1,16 +1,20 @@
-# Create Branch GitHub Action
+# Create Release Branch GitHub Action
 
 This action creates a new branch with the same commit reference as the branch it is being ran on, or your chosen reference when specified.
 
 ## Inputs
 
-### `branch`
+### `baseNumber`
 
-**Optional** The name of the branch to create. Default `"release-candidate"`.
+**Optional** the number to start release with for example here baseNumber 3 `"release-3"`.
 
-### `sha`
+### `numberOfWeeks`
 
-**Optional** The SHA1 value for the branch reference.
+**Optional** create release branch on each number of weeks. default value is 2
+
+### `baseDate`
+
+base date to check if specific number of weeks are passed
 
 ## Outputs
 
@@ -21,9 +25,12 @@ Boolean value representing whether or not a new branch was created.
 ## Example usage
 
 ```
-uses: peterjgrainger/action-create-branch@v2.0.1
+uses: TheEhsanSarshar/action-create-release-two-week
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 with:
-  branch: 'release-notes'
+  baseNumber: 17
+  baseDate: '2022-04-07'
+  numberOfWeeks: 2
 ```
