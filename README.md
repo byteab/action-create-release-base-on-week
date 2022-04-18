@@ -25,7 +25,7 @@ Boolean value representing whether or not a new branch was created.
 ## Example usage
 
 ```
-uses: TheEhsanSarshar/action-create-release-base-on-week
+uses: TheEhsanSarshar/action-create-release-base-on-week@master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
