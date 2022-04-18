@@ -1,15 +1,19 @@
-name: 'Create Branch'
-description: 'Creates a branch'
-author: 'Peter Grainger (peter@grainger)'
+name: 'Create A Release Branch Weekly'
+description: 'Create A Release Branch GitHub Action'
+author: 'Ehsan Sarshar'
 branding:
   icon: 'git-branch'
   color: 'green'
 inputs:
-  branch:
-    description: 'The branch to create'
-    default: 'release-candidate'
-  sha:
-    description: 'The SHA1 value for the branch reference'
+  baseNumber:
+    description: 'the number to start release with for example here baseNumber 3 `"release-3"`'
+    default: '0'
+  numberOfWeeks:
+    description: 'create release branch on each number of weeks'
+    default: '2'
+  baseDate:
+    description: 'base date to check if specific number of weeks are passed'
+    required: true
 outputs:
   created:
     description: 'Boolean value representing whether or not a new branch was created.'
